@@ -71,7 +71,7 @@
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
 					<h3>Technical considerations</h3>
-					<p>Native fonts Vs Self hosted fonts Vs remote hosted fonts</p>
+					<p>Native fonts Vs Self hosted fonts Vs Remote hosted fonts</p>
 					<aside class="notes">
 					</aside>
 				</section>
@@ -79,9 +79,9 @@
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
 					<h3>Native fonts</h3>
-					<p>Native fonts live on the users system. Since they are already on the user's computer they will display instantly.
+					<p>Native fonts live on the user&rsquo;s system. Since they are already on the user&rsquo;s computer they will display instantly.
 						By careful though, as fonts available on one system may not be available on antoher.
-						For example the font "Helvetica" is available on OSX (Macs), but not Windows (PCs)</p>
+						For example the font &ldquo;Helvetica&rdquo; is available on OSX (Macs), but not Windows (PCs)</p>
 					<aside class="notes">
 					</aside>
 				</section>
@@ -103,7 +103,7 @@
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
 					<h3>Font stacking</h3>
-					<p>Because all systems have default fonts for all these categories we should specify them as backup fonts in our "font stack".</p>
+					<p>Because all systems have default fonts for all these categories we should specify them as backup fonts in our &ldquo;font stack&rdquo;.</p>
 					<p>A font stack specifies a list of fonts to use with each subesquent font being a fall back if the previous font was not found</p>
 					<aside class="notes">
 					</aside>
@@ -130,38 +130,90 @@
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
 					<h3>Self hosted fonts</h3>
-					<p>These are fonts that we install on our server and the user's browser downloads when they visit the page. 
+					<p>These are fonts that we install on our server and the user&rsquo;s browser downloads when they visit the page. 
 						We generally call them using the <code>@font-face</code> code in our css</p>
 					<aside class="notes">
 					</aside>
 				</section>
 
+
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Rendering</h3>
+					<h3>Self hosted fonts</h3>
+					<p>Fonts come in a variety of formats:</p>
+					<ul>
+						<li>woff2 - Cutting-edge Web Open Font Format</li>
+						<li>woff - Web Open Font Format</li>
+						<li>ttf - True Type Font</li>
+						<li>eot - Embedded OpenType, used on Windows</li>
+						<li>svg - Scalable Vector Graphic</li>
+					</ul>
+					<p>We mostly want to use woff2 and woff, but may need to provide ttf, eot and svg as fallbacks for very old browsers
 					<aside class="notes">
 					</aside>
 				</section>
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Rendering</h3>
+					<h3>Examples of use</h3>
+					<p style="text-align:left"><code>@font-face {</code></p>
+  					<p style="text-align:left"><code>&nbsp;	font-family: 'MyWebFont';</code></p>
+  					<p style="text-align:left"><code>&nbsp;	src:  url('myfont.woff2') format('woff2'),</code></p>
+        			<p style="text-align:left"><code>&nbsp;	url('myfont.woff') format('woff');</code></p>
+					<p style="text-align:left"><code>}</code></p>
+				</section>
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>Examples of use</h3>
+					<p style="text-align:left"><code>body {</code></p>
+  					<p style="text-align:left"><code>&nbsp;	  font-family: 'MyWebFont', Fallback, sans-serif;</code></p>
+					<p style="text-align:left"><code>}</code></p>
+				</section>
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>Remotely hosted fonts</h3>
+					<p>An alternative to buying fonts and installing them on your system is to use a remote service. Options include:</p>
+					<ul>
+						<li>Google Fonts</li>
+						<li>Adobe Typekit</li>
+					</ul>
 					<aside class="notes">
 					</aside>
 				</section>
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Rendering</h3>
+					<h3>Remotely hosted fonts</h3>
+					<p>Instead of calling the font files from your own server these are called from a seperate service.</p>
 					<aside class="notes">
 					</aside>
 				</section>
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Rendering</h3>
+					<h3>Examples of use</h3>
+  					<p style="text-align:left">Add to head of your document</p>
+					<p style="text-align:left"><code>&lt;link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'&gt;</code></p>
+  					<p style="text-align:left">And call it in your CSS thus:</p>
+					<p style="text-align:left"><code>font-family: 'Open Sans', sans-serif;</code></p>
+				</section>
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>Self hosted fonts Vs remote hosted fonts</h3>
+					<p>Self hosted gives you more control over the fonts you use</p>
+					<p>More reliable delivery, since you are relying on your server and not someone elses</p>
+					<p>Get to chose from all the web fonts available in the world</p>
+					<p>Expensive</p>
+					<p>Calls for a commitment</p>
+					<p>Fiddly to setup and get working - requires downloading files, uploading them to your server</p>
 					<aside class="notes">
 					</aside>
 				</section>
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Rendering</h3>
+					<h3>Self hosted fonts Vs remote hosted fonts</h3>
+					<p>Less control over the fonts</p>
+					<p>Relying on another server - font stack even more important</p>
+					<p>More limited choices</p>
+					<p>Can be free. Subscription services cost money - but gives you the chance to play with fonts more</p>
+					<p>...therefore no commitment</p>
+					<p>Quick to set up</p>
 					<aside class="notes">
 					</aside>
 				</section>
@@ -181,13 +233,13 @@
 				</section>
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Em boxes - sizes</h3>
+					<h3>Types of font</h3>
 					<aside class="notes">
 					</aside>
 				</section>
 
-				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>Font contrast</h3>
+				<section>
+					<img src="img/Serif-sans-serif.jpg" style="border: none; box-shadow: none"></img>
 					<aside class="notes">
 					</aside>
 				</section>
@@ -200,12 +252,6 @@
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
 					<h3>Proper Vs Faux bolds and italics</h3>
-					<aside class="notes">
-					</aside>
-				</section>
-
-				<section data-background="img/crumpled-paper.jpg" class="black-text">
-					<h3>X-height examples</h3>
 					<aside class="notes">
 					</aside>
 				</section>
@@ -237,10 +283,58 @@
 				</section>
 
 				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>Eccentricity examples</h3>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section>
+					<img src="img/Eccentricities.jpg" style="border: none; box-shadow: none"></img>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>X-height examples</h3>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section>
+					<img src="img/x-heights.jpg" style="border: none; box-shadow: none"></img>
+					<aside class="notes">
+					</aside>
+				</section>
+
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>Low to medium contrast</h3>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section>
+					<img src="img/contrast.jpg" style="border: none; box-shadow: none"></img>
+					<aside class="notes">
+					</aside>
+				</section>
+								<section>
+					<img src="img/contrast2.jpg" style="border: none; box-shadow: none"></img>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
 					<h3>Pairing fonts</h3>
 					<p>Contrast Vs Harmony</p>
 					<p>Pairing serifs with sans-serifs to create contrast</p>
-					<p></p>
+					<p>You might consider using just one typeface and using scale, colour or weight to indicate heirarchy</p>
+					<p>If you do choose to pair fonts there are some considerations</p>
+					<aside class="notes">
+					</aside>
+				</section>
+
+
+				<section data-background="img/crumpled-paper.jpg" class="black-text">
+					<h3>Pairing fonts</h3>
+					<p>Contrast Vs Harmony</p>
 					<aside class="notes">
 					</aside>
 				</section>
